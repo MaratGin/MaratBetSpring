@@ -1,0 +1,228 @@
+body {
+    background-image: url("../photos/MainPage.png");
+    /*background-size: 100%;*/
+    background-attachment: local;
+    /*background-repeat: no-repeat;*/
+}
+main {
+    color: white;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 16pt;
+    margin-top: 15%;
+    margin-right: 210px;
+    margin-left: 2%;
+    padding: 15px  15px 15px 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ffffff;
+
+    transition: .2s;
+
+}
+main:hover {
+    box-shadow: 0 0 24px #98cb0d;
+    color: white;
+    transform: translateY(-5px);
+
+}
+div.Mainlogo {
+    /*color: #deae36;*/
+    color: white;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 45pt;
+    text-align: center;
+    margin-top: 20px;
+    /*margin-left: 40%;*/
+
+}
+
+span.maratbet {
+    color: white;
+    font-family: 'Parimatch', serif;
+    font-size: 30pt;
+}
+span.logo {
+    color: white;
+    font-size: 27pt;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    padding-left: 10px;
+    /*padding-left: 38%;*/
+}
+@font-face {
+    font-family: 'Parimatch';
+    src: url('../Parimatch_fonts/Parimatch-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Parimatch Regular';
+    src: url('../Parimatch_fonts/Parimatch-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Parimatch Thin';
+    src: url('../Parimatch_fonts/Parimatch-Thin.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+div.fisrt {
+    display: flex;
+    color: white;
+}
+div.betTypes {
+    margin-top: 300px;
+    margin-left: 840px;
+    color: black;
+    font-size: 38pt;
+    font-family:'Parimatch',sans-serif;
+
+}
+input {
+    display: flex;
+}
+input.login {
+    margin-top: 310px;
+    /*margin-right: 170px;*/
+    text-decoration: none;
+    display: inline-block;
+    width: 260px;
+    height: 70px;
+    line-height: 45px;
+    border-radius: 10px;
+    font-family: "Parimatch", sans-serif;
+    font-size: 19px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #524f4e;
+    background: white;
+    text-transform: uppercase;
+
+    transition: .5s;
+
+
+}
+.login:hover {
+    /*background: #deae36;*/
+    background: #98cb0d;
+    box-shadow: 0 0 18px  #ffffff;
+    color: white;
+    transform: translateX(-5px);
+}
+
+input.register {
+    margin-top: 15px;
+    text-decoration: none;
+    display: inline-block;
+    width: 260px;
+    height: 70px;
+    line-height: 45px;
+    border-radius: 10px;
+    /*margin: 10px 20px;*/
+    font-family: 'Parimatch', sans-serif;
+    font-size:  19px;
+
+    text-transform: uppercase;
+
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #524f4e;
+    background: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    transition: .5s;
+
+
+}
+
+input.register:hover {
+    /*background: #bfb914;*/
+    background: #98cb0d;
+    /*background: #a8cb0f;*/
+    /*background: #deae36;*/
+    box-shadow: 0 0 18px  #ffffff;
+    color: white;
+    transform: translateY(-5px);
+}
+li.sports {
+    font-family: Parimatch, serif;
+    font-size: 35pt;
+    list-style-type: none;
+    transition: .5s;
+
+}
+li.sports:before {
+    content: "—";
+}
+li.sports:hover {
+    transform: translateY(-5px);
+
+}
+div.info {
+    height: 90px;
+    margin-top: 100px;
+}
+hr.footerLine {
+    margin-top: 112px;
+    height: 2px;
+    color: black; /* Цвет линии для остальных браузеров */
+    background-color: black; /* Цвет линии для браузера Firefox и Opera */
+    margin-right: -10px;
+    margin-left: -10px;
+}
+div.header {
+    position: fixed;
+    margin-top: -20px;
+    margin-left: -10px;
+    width: 1440px ;
+    height: 89px;
+    z-index: 1 ;
+    background: black;
+}
+hr.headerLine {
+    margin-top: 16px;
+
+}
+span.footerLogo {
+    display: flex;
+    color: black;
+    font-size: 40pt;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+span.footerText {
+    display: flex;
+    padding-left: 10px;
+    padding-top: 35px;
+    font-family: 'Helvetica', sans-serif;
+    /*color: #524f4e;*/
+    color: #9a9899;
+    font-size: 12pt;
+
+}
+div.counter {
+    margin-top: 170px;
+    margin-right: 220px;
+    margin-left: 220px;
+
+    text-align: center;
+    color: white;
+    font-family: Parimatch, sans-serif;
+    font-size: 31pt;
+    /*box-shadow: 0 0 18px  #ffffff;*/
+    height: 50px;
+    transition: .5s;
+    text-shadow: 0 0 4px  #ffffff;
+}
+div.counter:hover {
+    transform: translateY(-10px);
+
+}
+span.registered {
+    color: darkgoldenrod;
+}
