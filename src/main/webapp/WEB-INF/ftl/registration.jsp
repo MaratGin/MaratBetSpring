@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="../../../resources/static/introductionStyle.css">
+
 </head>
 <body>
 

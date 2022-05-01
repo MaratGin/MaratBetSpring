@@ -4,5 +4,10 @@
       "name": "db.url",
       "type": "java.lang.String",
       "description": "Description for db.url."
-  }
-] }
+    },
+    {
+      "name": "spring.style.introduction",
+      "type": "java.lang.String",
+      "description": "Description for spring.style.introduction."
+    }
+  ] }
