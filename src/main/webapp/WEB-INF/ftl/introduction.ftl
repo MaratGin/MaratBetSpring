@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="header">
-    <div class="Mainlogo"> MARATBET</div>
+    <div class="Mainlogo">MARATBET</div>
 
     <hr class="headerLine">
 </div>
@@ -32,7 +32,7 @@
             <li>Отвечай на разнообразные вопросы</li>
             <li>Получи валюту на счет!</li>
             <li>Делай ставки на главные матчи</li>
-            <li>Побеждай с стань лучшим предсказателем-аналитиком</li>
+            <li>Побеждай и стань лучшим предсказателем-аналитиком</li>
 
         </ul>
         Начни путь к несметному (абстрактному) богатству с  <span class="logo"> MARATBET</span>
@@ -41,7 +41,7 @@
         <!--        <a href="" class="login">Войти</a>-->
 
         <input type="button" name="Войти" class="login" value="войти" onclick='location.href="/signIn"'>
-        <input type="button" name="Зарегестрироваться"  class="register" value="Зарегистрироваться" onclick='location.href="localhost:8080/registration"'>
+        <input type="button" name="Зарегестрироваться"  class="register" value="Зарегистрироваться" onclick='location.href="localhost:8080/signUp"'>
     </form>
 </div>
 <div class="counter" > На данный момент зарегистрировано <span class="registered"> 999 </span> пользователей. Присоединяйся!</div>
@@ -63,7 +63,6 @@
 <div class="info">
     <hr class="footerLine">
     <span class="footerLogo">  MARATBET <span class="footerText"> © Выполнено Гиниятовым Маратом из группы 11-003 в качестве семестровой. Все права не защищены. Авторских прав на картинки тоже нет(не сажайте меня)</span></span>
-
 </div>
 </body>
 </html>
