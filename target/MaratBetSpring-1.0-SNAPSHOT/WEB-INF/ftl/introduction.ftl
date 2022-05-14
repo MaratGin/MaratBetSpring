@@ -41,7 +41,7 @@
         <!--        <a href="" class="login">Войти</a>-->
 
         <input type="button" name="Войти" class="login" value="войти" onclick='location.href="/signIn"'>
-        <input type="button" name="Зарегестрироваться"  class="register" value="Зарегистрироваться" onclick='location.href="localhost:8080/signUp"'>
+        <input type="button" name="Зарегестрироваться"  class="register" value="Зарегистрироваться" onclick='location.href="/signUp"'>
     </form>
 </div>
 <div class="counter" > На данный момент зарегистрировано <span class="registered"> 999 </span> пользователей. Присоединяйся!</div>

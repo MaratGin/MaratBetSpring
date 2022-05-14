@@ -19,5 +19,9 @@ public interface UsersService {
     boolean uploadBet(UserBet userBet);
     Cookie setCookie(User user);
     Confirmation saveConfirm(ConfirmForm confrimForm);
+    Boolean isEmailExists(String email);
+    Boolean isLoginExists(String login);
+    Confirmation findByEmail(String email);
+
 
 }

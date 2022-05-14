@@ -17,25 +17,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&display=swap" rel="stylesheet">
 
 </head>
-<body>
+<body class="register">
 <h1> <div class="MainDiv">MARATBET </div> </h1>
 <#--<%--action="${pageContext.request.contextPath}/main" method="post"--%>-->
 <form action="/signUp" method="post" >
     <br>
     <label>
-        <input id="email" type="email" name="email" maxlength="25"  placeholder="email" class="login">
+        <input id="email" type="email" name="email" maxlength="35"  placeholder="email" class="login">
     </label>
     <br>
     <label>
-        <input id="login" type="text" name="login" maxlength="15" minlength="5" placeholder="Login" class="login" >
+        <input id="login" type="text" name="login" maxlength="25" minlength="5" placeholder="Login" class="login" >
     </label>
     <br>
     <label>
-        <input id="password" type="password" name="password" maxlength="15" minlength="5" placeholder="Password" class="password">
+        <input id="password" type="password" name="password" maxlength="20" minlength="8" placeholder="Password" class="password">
     </label>
     <br>
     <label>
-        <input id="repassword" type="password" name="repassword" maxlength="15" minlength="5" placeholder="Confirm Password" class="password" >
+        <input id="repassword" type="password" name="repassword" maxlength="20" minlength="8" placeholder="Confirm Password" class="password" >
     </label>
     <br>
 <#--    <%--    <button type="submit" name="submit" class="submit" onclick="checkEverything()"> Зарегестрироваться! </button>--%>-->

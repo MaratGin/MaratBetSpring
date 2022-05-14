@@ -13,7 +13,8 @@ public class EmailServiceImpl  {
 
     public void sendSimpleMessage(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("spring.mail.username");
+        System.out.println(to + "  /  " + subject + "  /  "+ text);
+        message.setFrom("maratbet@rambler.ru");
         message.setTo(to);
         message.setSubject(subject);
         message.setText(text);

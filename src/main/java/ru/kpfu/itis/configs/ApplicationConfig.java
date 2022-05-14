@@ -137,11 +137,13 @@ public FreeMarkerConfigurer freemarkerConfig() {
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("spring.mail.host");
-        mailSender.setPort(587);
-        mailSender.setUsername("spring.mail.username");
-        mailSender.setPassword(System.getProperty("EMAIL_PASSWORD"));
+        mailSender.setHost("smtp.rambler.ru");
+        mailSender.setPort(25);
+        mailSender.setUsername("maratbet@rambler.ru");
+        System.out.println("------------------- "+ System.getenv("email_password"));
+        mailSender.setPassword("gycmyp-bivbar-0xaxcE");
         Properties props = mailSender.getJavaMailProperties();
+
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");

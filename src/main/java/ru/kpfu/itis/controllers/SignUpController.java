@@ -20,6 +20,7 @@ import ru.kpfu.itis.services.Validator;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 @Controller
@@ -57,8 +58,8 @@ public class SignUpController {
         ModelAndView modelAndView = new ModelAndView();
         Validator validator = new Validator();
         Pattern passwordPattern = Pattern.compile("(?=.*[0-9])[a-zA-Z0-9]{6,64}");
-        Pattern emailPattern = Pattern.compile("[A-Z0-9a-z]{1,64}@[0-9A-Za-z]{1,64}\\\\.[a-z]{2,64}");
-        Pattern loginPattern = Pattern.compile("(?=.*[0-9])[a-zA-Z0-9]{6,12}");
+        Pattern emailPattern = Pattern.compile("[A-Z0-9a-z]{1,64}@[0-9A-Za-z]{1,64}\\.[a-z]{2,64}");
+        Pattern loginPattern = Pattern.compile("[a-zA-Z0-9]{6,12}");
         String login = userDto.getLogin();
         String email = userDto.getEmail();
         String password = userDto.getPassword();
@@ -68,46 +69,75 @@ public class SignUpController {
             error = "Недопустимая длина логина (минимум 5 символов)!";
             modelAndView.setViewName("signUp");
             modelAndView.addObject("registrationStatus",error);
+            System.out.println("1");
             return modelAndView;
         }
         if (email.length() == 0) {
             error = "Недопустимая длина e-mail!";
-            modelAndView.setViewName("redirect:/signUp");
+            modelAndView.setViewName("signUp");
             modelAndView.addObject("registrationStatus",error);
+            System.out.println("2");
+
             return modelAndView;
         }
         if (password.length() < 8) {
             error = "Недопустимая длина пароля (минимум 8 символов)!";
-            modelAndView.setViewName("redirect:/signUp");
+            modelAndView.setViewName("signUp");
             modelAndView.addObject("registrationStatus",error);
+            System.out.println("3");
+
             return modelAndView;
         }
         if (!password.equals(repassword)) {
             error = "пароли не совпадают!";
-            modelAndView.setViewName("redirect:/signUp");
+            modelAndView.setViewName("signUp");
             modelAndView.addObject("registrationStatus",error);
+            System.out.println("3");
+
             return modelAndView;
         }
         if (!passwordPattern.matcher(password).matches()) {
             error = "неверный формат пароля!";
-            modelAndView.setViewName("redirect:/signUp");
+            modelAndView.setViewName("signUp");
             modelAndView.addObject("registrationStatus",error);
+            System.out.println("4");
+
             return modelAndView;
         }
-        if (!emailPattern.matcher(password).matches()) {
+        if (!emailPattern.matcher(email).matches()) {
             error = "неверный формат e-mail адреса!";
-            modelAndView.setViewName("redirect:/signUp");
+            modelAndView.setViewName("signUp");
+            modelAndView.addObject("registrationStatus",error);
+            System.out.println("5");
+
+            return modelAndView;
+        }
+        if (usersService.isEmailExists(email)) {
+            error = "аккаунт с таким e-mail уже существует!";
+            modelAndView.setViewName("signUp");
             modelAndView.addObject("registrationStatus",error);
             return modelAndView;
         }
-        if (!loginPattern.matcher(password).matches()) {
+
+
+        if (!loginPattern.matcher(login).matches()) {
             error = "неверный формат имени пользователя!";
-            modelAndView.setViewName("redirect:/signUp");
+            modelAndView.setViewName("signUp");
+            modelAndView.addObject("registrationStatus",error);
+            System.out.println("6");
+
+            return modelAndView;
+        }
+        if (usersService.isLoginExists(login)) {
+            error = "аккаунт с таким логином уже существует!";
+            modelAndView.setViewName("signUp");
             modelAndView.addObject("registrationStatus",error);
             return modelAndView;
         }
 
         if (password.equals(repassword)) {
+            System.out.println("7");
+
             UserForm userForm = UserForm.builder()
                     .login(login)
                     .password(password)
@@ -123,8 +153,9 @@ public class SignUpController {
                     .code(code)
                     .build();
 
-           Cookie cookie =  usersService.signIn(authForm);
-           if (cookie != null) {
+//           Cookie cookie =  usersService.signIn(authForm);
+
+               System.out.println("8");
                String messageBody = login + ", Добро пожаловать на MaratBet! \n " +
                        "Для того, чтобы пользоваться нашим сайтам необходимо подтвердить аккаунт введя код ниже \n "
                        + code.toString();
@@ -133,25 +164,29 @@ public class SignUpController {
               Confirmation confirmation = usersService.saveConfirm(confirmForm);
 //               curEmail = email;
 //               cookie.setMaxAge(10*60*60);
-               modelAndView.setViewName("redirect:/confirmation");
+               modelAndView.addObject("email", confirmForm.getEmail());
+               modelAndView.addObject("registrationStatus", "");
+               modelAndView.setViewName("confirmation");
 //               response.addCookie(cookie);
 //               response.addCookie(new Cookie("attempt", Integer.toString(confirmation.getId())));
               ConfirmDto confirmDto =  ConfirmDto.builder()
                        .code(code)
                        .email(email)
                        .build();
-               return confirmation(confirmDto, request);
-           } else {
-               error = "Ошибка сервера, повторите позже";
-               modelAndView.setViewName("redirect:/signUp");
-               modelAndView.addObject("registrationStatus",error);
-               return modelAndView;
-           }
+            //  return confirmation(confirmDto, request);
+            return  modelAndView;
+
+//               System.out.println("9");
+//               error = "Ошибка сервера, повторите позже";
+//               modelAndView.setViewName("signUp");
+//               modelAndView.addObject("registrationStatus",error);
+//               return modelAndView;
+
             
         } else {
             error = "Пароли не совпадают!";
         }
-        modelAndView.setViewName("redirect:/signUp");
+        modelAndView.setViewName("signUp");
         modelAndView.addObject("registrationStatus",error);
         return modelAndView;
 //        List<User> users = usersService.getUsers();
@@ -164,21 +199,39 @@ public class SignUpController {
 //        response.cook
         System.out.println("smdskldalkmsdkakdllm");
         request.setAttribute("email", confirmDto.getEmail());
-//        List<User> users = usersService.getUsers();
-//        modelAndView.addObject("users", users);
         modelAndView.setViewName("confirmation");
         return modelAndView;
     }
     @RequestMapping(value = "/confirmation" , method = RequestMethod.POST)
     public ModelAndView confirmationPOST(ConfirmDto confirmDto, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
-//        response.cook
+        String asd = (String) request.getAttribute("email");
+        Confirmation value = usersService.findByEmail(asd);
+        if (value != null && Objects.equals(value.getCode(), confirmDto.getCode())) {
+            modelAndView.setViewName("redirect:/main");
+            return modelAndView;
+        }
+        modelAndView.addObject("registrationStatus", "Неверный ввод кода, повторите!");
+        modelAndView.setViewName("signUp");
+        return modelAndView;
+    }
+/*
+    @RequestMapping(value = "/main" , method = RequestMethod.GET)
+    public ModelAndView getMainPage(ConfirmDto confirmDto, HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+        String asd = (String) request.getAttribute("email");
+        Confirmation value = usersService.findByEmail(asd);
+        if (value != null && Objects.equals(value.getCode(), confirmDto.getCode())) {
+            modelAndView.setViewName("mainPage");
+
+        }
         System.out.println("smdskldalkmsdkakdllm");
 //        List<User> users = usersService.getUsers();
 //        modelAndView.addObject("users", users);
         modelAndView.setViewName("signUp");
         return modelAndView;
     }
+    */
 
 
 }

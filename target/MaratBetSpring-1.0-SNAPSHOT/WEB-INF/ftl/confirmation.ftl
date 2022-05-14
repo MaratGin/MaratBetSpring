@@ -17,19 +17,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&display=swap" rel="stylesheet">
 
 </head>
-<body>
+<body class = "confirmation">
 <h1> <div class="MainDiv">MARATBET </div> </h1>
 <#--<%--action="${pageContext.request.contextPath}/main" method="post"--%>-->
-<form action="${pageContext.request.contextPath}/confirmation" method="post">
-    <h1> <div class="maratbet">На вашу почту ${email} отправлено сообщение с кодом, введите код</div> </h1>
+<form action="/confirmation" method="post">
+    <h2 class="maratbet"> На вашу почту <span> ${email} </span> отправлено сообщение с кодом, введите код</h2>
 
     <br>
     <label>
-        <input id="login" type="text" name="confirmation" maxlength="15" minlength="5" placeholder="Enter code" class="login" >
+        <input id="login" type="text" name="confirmation" maxlength="15" minlength="5" placeholder="Enter code" class="confirmation" >
     </label>
     <br>
     <#--    <%--    <button type="submit" name="submit" class="submit" onclick="checkEverything()"> Зарегестрироваться! </button>--%>-->
-    <input id="submit" type="submit" name="submit" value="Зарегистрироваться" class="submit"    >
+    <input id="submit" type="submit" name="submit" value="Зарегистрироваться" class="submitCode"    >
     <#--    <%--    <p style="font-size: small"> <label class="Remember" for="rem"> Remember me! </label>  <input  id="rem" type="checkbox" name="Remember me" value="true"> </p>--%>-->
     <#--    <%--    <form action="${pageContext.request.contextPath}/main" method="post" ><input id="redirect" type="hidden"></form>--%>-->
 </form>
