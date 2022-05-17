@@ -1,27 +1,31 @@
 package ru.kpfu.itis.services;
 
-import org.mindrot.jbcrypt.BCrypt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.kpfu.itis.models.entities.Auth;
-import ru.kpfu.itis.models.entities.Confirmation;
-import ru.kpfu.itis.models.entities.User;
-import ru.kpfu.itis.models.entities.UserBet;
+import ru.kpfu.itis.enums.Role;
+import ru.kpfu.itis.exceptions.UserNotFoundException;
+import ru.kpfu.itis.models.entities.*;
 import ru.kpfu.itis.models.forms.AuthForm;
 import ru.kpfu.itis.models.forms.ConfirmForm;
 import ru.kpfu.itis.models.forms.LoginForm;
 import ru.kpfu.itis.models.forms.UserForm;
 import ru.kpfu.itis.repositories.AuthRepository;
 import ru.kpfu.itis.repositories.ConfirmationRepository;
+import ru.kpfu.itis.repositories.PhotosRepository;
 import ru.kpfu.itis.repositories.UsersRepository;
+import ru.kpfu.itis.services.interfaces.UsersService;
 
 import javax.servlet.http.Cookie;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class UsersServiceImpl implements UsersService{
-    private final int logRounds = 10;
+public class UsersServiceImpl implements UsersService {
     @Autowired
     private UsersRepository usersRepository;
 
@@ -31,47 +35,82 @@ public class UsersServiceImpl implements UsersService{
     @Autowired
     private ConfirmationRepository confirmationRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    PhotosRepository photosRepository;
+
+    private final Logger log = LoggerFactory.getLogger(UsersServiceImpl.class);
+
+
 
     @Override
-    public User register(UserForm userForm) {
+    public User register(UserForm userForm)  {
+        log.info("Registration");
         User user = new User();
         user.setLogin(userForm.getLogin());
         user.setEmail(userForm.getEmail());
-        String passwordHash = BCrypt.hashpw(userForm.getPassword(),BCrypt.gensalt(logRounds));
-        user.setPasswordHash(passwordHash);
-        return usersRepository.save(user);
+        user.setRole(Role.ROLE_USER);
+        user.setConfirmed(userForm.getConfirmed());
+        user.setBalance(1000L);
+        Date date = new Date();
+        user.setRegistration(new Timestamp(date.getTime()));
+        String passwordHash = passwordEncoder.encode(userForm.getPassword());
+        user.setPassword(passwordHash);
+        User savedUser = usersRepository.save(user);
+       Photos photos =  Photos.builder()
+                .userID(savedUser.getId())
+                        .photoURL("Task1.png")
+                                .build();
+       photosRepository.save(photos);
+        return savedUser;
     }
 
     @Override
-    public Cookie signIn(AuthForm authForm) {
+    public Cookie signInAfter(AuthForm authForm, User user) {
         Auth auth = new Auth();
-        System.out.println("I aam in signIn!");
-        Optional<User> user = usersRepository.findByLogin(authForm.getEmail());
-        if (user.isPresent()) {
-            if (BCrypt.checkpw(authForm.getPassword(),user.get().getPasswordHash())){
                 System.out.println("VHOD USPESHEN!!!");
                 String cookieValue = UUID.randomUUID().toString();
                 Cookie cookie = new Cookie("auth",cookieValue);
                 cookie.setMaxAge(10 * 60 *60);
-                auth.setUser(user.get());
+                auth.setUser(user);
                 auth.setCookieValue(cookieValue);
                 authRepository.save(auth);
                 return cookie;
-            } else {
-                System.out.println("signIn Failed!!!");
-            }
-        }
-        return null;
     }
 
     @Override
-    public User findByLogin(String login) {
-        return null;
+    public String getAvatarById(Long id) {
+       Optional<String> photo =  photosRepository.findByUserID(id);
+       if (photo.isPresent()) {
+           return photo.get();
+       } else {
+           return "Task1.png";
+       }
     }
 
     @Override
-    public User findByCookie(String cookie) {
-        return null;
+    public void updatePhoto(String url, Long id) {
+        photosRepository.updatePhotoById(url,id);
+    }
+
+    @Override
+    public void updateBalance(Long total, Long id) {
+        log.info("Updating balance");
+        usersRepository.updateBalance(total,id);
+//        usersRepository.up
+    }
+
+    @Override
+    public User findByLogin(String login) throws UserNotFoundException {
+        log.info("Finding by login");
+       Optional<User> user = usersRepository.findByLogin(login);
+
+       if (user.isPresent()) {
+           return user.get();
+       }
+       throw new UserNotFoundException("Пользователь не найден!");
     }
 
     @Override
@@ -80,17 +119,14 @@ public class UsersServiceImpl implements UsersService{
     }
 
     @Override
-    public boolean uploadBet(UserBet userBet) {
-        return false;
-    }
-
-    @Override
-    public Cookie setCookie(User user) {
-        return null;
+    public User findById(Long id) {
+        Optional<User> user = usersRepository.findById(id);
+        return user.orElse(null);
     }
 
     @Override
     public Confirmation saveConfirm(ConfirmForm confrimForm) {
+        log.info("Saving confirmation");
         System.out.println("Saving");
         Confirmation confirmation = new Confirmation();
         confirmation.setCode(confrimForm.getCode());
@@ -121,8 +157,39 @@ public class UsersServiceImpl implements UsersService{
        Optional<Confirmation> confirmation = confirmationRepository.findByEmail(email);
        if (confirmation.isPresent()) {
            return confirmation.get();
-
        }
        return null;
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        System.out.println(email);
+       User user =  usersRepository
+                .findByEmail(email).get();
+
+        return user;
+    }
+
+    @Override
+    public Cookie signIn(LoginForm loginForm) {
+        Auth auth = new Auth();
+        System.out.println(loginForm.getEmail());
+        Optional<User> user = usersRepository.findByEmail(loginForm.getEmail());
+        if (user.isPresent()) {
+            System.out.println(loginForm.getPassword());
+            System.out.println(user.get().getPassword());
+            if (passwordEncoder.matches(loginForm.getPassword(),user.get().getPassword())){
+                String cookieValue = UUID.randomUUID().toString();
+                Cookie cookie = new Cookie("auth",cookieValue);
+                cookie.setMaxAge(10 * 60 *60);
+                auth.setUser(user.get());
+                auth.setCookieValue(cookieValue);
+                authRepository.save(auth);
+                return cookie;
+            } else {
+                log.info("Sign in failed!");
+            }
+        }
+        return null;
     }
 }

@@ -1,0 +1,28 @@
+
+GET http://localhost:8080/rest/getBets
+###
+
+POST http://localhost:8080/rest/postBets
+Content-Type: application/json
+
+{
+  "name": "Name",
+  "matchId": 1,
+  "value": 3,
+  "outcome": 0
+}
+
+###
+
+PUT http://localhost:8080/rest/bets/3
+Content-Type: application/json
+
+{
+  "matchId": 1,
+  "value": 10,
+  "outcome": 1
+}
+
+###
+
+DELETE http://localhost:8080/rest/bets/10

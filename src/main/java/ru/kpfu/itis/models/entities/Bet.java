@@ -18,10 +18,10 @@ public class Bet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "match_id")
-    private int matchId;
+    private Long matchId;
 
     @Column(name = "outcome")
     private int outcome;
@@ -31,8 +31,8 @@ public class Bet {
 
     @ManyToMany
     @JoinTable(name = "user_bet",
-    joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "bet_id"))
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "bet_id"))
     @Fetch(value = FetchMode.JOIN)
     private List<User> users;
 

@@ -13,6 +13,6 @@ import java.util.Optional;
 @Transactional
 public interface ConfirmationRepository  extends JpaRepository<Confirmation,Long> {
     @Query("select c from Confirmation c " +
-            "where c.id = (select max(conf.id) from Confirmation conf where conf.email = :value )")
+            "where c.id = (select max(conf.id) from Confirmation conf where conf.email = ?1)")
     Optional<Confirmation> findByEmail(String email);
 }

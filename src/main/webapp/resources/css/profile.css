@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'Parimatch';
+    src: url('../Parimatch_fonts/Parimatch-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Parimatch Regular';
+    src: url('../Parimatch_fonts/Parimatch-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Parimatch Thin';
+    src: url('../Parimatch_fonts/Parimatch-Thin.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: black;
+
+}
+h3.profile{
+    color: white;
+    font-size: 38pt;
+    font-family: "Parimatch Regular","Helvetica",serif;
+    text-align: center;
+}
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto ;
+    display: block;
+
+}
+.change {
+    width: 200px;
+    height: 50px;
+    margin: 16px auto;
+    display: block;
+}
+.blur-image {
+    background: url("../Photos/LoginImage.png") no-repeat center top / cover;
+    /*-webkit-filter: blur(5px);*/
+    /*-moz-filter: blur(5px);*/
+    /*-o-filter: blur(5px);*/
+    /*-ms-filter: blur(5px);*/
+    /*filter: blur(5px);*/
+    z-index: 0;
+    border: 3px solid #f1f1f1;
+}
+.content {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    z-index: 1;
+
+}
+span {
+    font-family: "Parimatch Regular", "Helvetica", serif;
+    font-size: 44pt;
+    color: white;
+    margin-left: 50px
+}
+.winSpan {
+    color: #6acb14;
+
+}
+.loseSpan {
+    color: red;
+}
+.loginSpan {
+    color: blue;
+}

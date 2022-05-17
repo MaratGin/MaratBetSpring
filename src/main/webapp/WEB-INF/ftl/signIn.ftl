@@ -19,16 +19,15 @@
 </head>
 <body>
 <h1> <div class="MainDiv">MARATBET</div> </h1>
-<%----%>
 <#--<form action="${pageContext.request.contextPath}/signIn" method="POST"  >-->
-    <form action="/signIn" method="post">
+    <form  method="post">
         <br>
         <label>
-            <input id="login" type="text" name="login" maxlength="15" minlength="5" placeholder="login?" class="login" onmouseleave="loginValidator()">
+            <input id="email" type="email" name="email" maxlength="55" minlength="5" placeholder="email?" class="login" >
         </label>
         <br>
         <label>
-            <input id="password" type="password" name="password" maxlength="15" minlength="5" placeholder="password?" class="password" onmouseleave="validatePassword()">
+            <input id="password" type="password" name="password" maxlength="15" minlength="5" placeholder="password?" class="password">
         </label>
         <br>
         <input id="submit" type="submit" name="submit" value="Войти" class="submit"  >
@@ -40,7 +39,10 @@
     <a class="vk" onclick="location.href='';" href="https://oauth.vk.com/authorize?client_id=7997612&redirect_uri=http://localhost:8080/vk&display=page&v=5.131&scope=status,email">Войти через ВК</a>
 
     <br>
-    <h3 id="k" style="color: white; text-align: center; font-family:'Parimatch', sans-serif; font-size: 30pt;  text-shadow:  0 0 7px red;"> ${signInStatus}</h3>
+<#if error??>
+    <h3 id="k" style="color: white; text-align: center; font-family:'Parimatch', sans-serif; font-size: 30pt;  text-shadow:  0 0 7px red;"> Неправильный логин или пароль!</h3>
+</#if>
+
     <script>
 
 

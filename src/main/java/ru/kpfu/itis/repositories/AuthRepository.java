@@ -11,7 +11,4 @@ import java.util.Optional;
 @Transactional
 public interface AuthRepository extends JpaRepository<Auth,Long> {
     Optional<Auth> findByCookieValue(String cookieValue);
-
-
-
 }

@@ -20,16 +20,17 @@
 <body class = "confirmation">
 <h1> <div class="MainDiv">MARATBET </div> </h1>
 <#--<%--action="${pageContext.request.contextPath}/main" method="post"--%>-->
-<form action="/confirmation" method="post">
-    <h2 class="maratbet"> На вашу почту <span> ${email} </span> отправлено сообщение с кодом, введите код</h2>
 
+    <h2 class="maratbet"> На вашу почту <div >${email}</div> отправлено сообщение с кодом, введите код</h2>
+<form action="/confirmation" method="post">
     <br>
     <label>
-        <input id="login" type="text" name="confirmation" maxlength="15" minlength="5" placeholder="Enter code" class="confirmation" >
+        <input id="code" type="text" name="code" maxlength="15" minlength="5" placeholder="Enter code" class="confirmation" >
+        <input id="email" type="text" name="email" maxlength="15" minlength="5" placeholder="Enter e-mail again" class="confirmation" value="${emaill}" style="visibility: hidden"  >
     </label>
     <br>
     <#--    <%--    <button type="submit" name="submit" class="submit" onclick="checkEverything()"> Зарегестрироваться! </button>--%>-->
-    <input id="submit" type="submit" name="submit" value="Зарегистрироваться" class="submitCode"    >
+    <input id="submit" type="submit" name="submit" value="Зарегистрироваться" class="submitCode" >
     <#--    <%--    <p style="font-size: small"> <label class="Remember" for="rem"> Remember me! </label>  <input  id="rem" type="checkbox" name="Remember me" value="true"> </p>--%>-->
     <#--    <%--    <form action="${pageContext.request.contextPath}/main" method="post" ><input id="redirect" type="hidden"></form>--%>-->
 </form>
@@ -37,6 +38,27 @@
 <br>
 <h3 id="registrationStatus" style="color: white; text-align: center; font-family:'Parimatch', sans-serif; font-size: 30pt; text-shadow:  0 0 7px red"> ${registrationStatus}</h3>
 </body>
+<script>function sendConfirm() {
+        var code = document.getElementById("code").value;
+        var email = document.getElementById("email").value;
+        var confirmDto = {
+            email: email,
+            code: code
+        };
+
+        $.ajax({
+            url: '/confirmation',
+            method: 'post',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(confirmDto),
+
+            success: function(data){
+                alert(data);
+            }
+
+        })
+
+    }</script>
 </html>
 
 

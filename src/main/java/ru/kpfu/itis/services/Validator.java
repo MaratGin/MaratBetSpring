@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import ru.kpfu.itis.models.dtos.UserDto;
+import ru.kpfu.itis.services.interfaces.UsersService;
 
 import java.util.regex.Pattern;
 

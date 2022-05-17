@@ -18,10 +18,10 @@ public class UserBet {
     private Long id;
 
     @Column(name = "user_id")
-    private int userId;
+    private Long userId;
 
-    @Column(name = "match_id")
-    private int matchId;
+    @Column(name = "bet_id")
+    private Long betId;
 
     @Column(name = "outcome")
     private int outcome;
