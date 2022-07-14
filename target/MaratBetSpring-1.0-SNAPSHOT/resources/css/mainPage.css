@@ -1,0 +1,260 @@
+body {
+    background-color: #22272d;
+}
+@font-face {
+    font-family: 'Parimatch';
+    src: url('../Parimatch_fonts/Parimatch-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Parimatch Regular';
+    src: url('../Parimatch_fonts/Parimatch-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Parimatch Thin';
+    src: url('../Parimatch_fonts/Parimatch-Thin.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+div.content {
+    position: absolute;
+    color: #ffffff;
+    background-color: #f5eee1;
+    top: 82px;
+    height: 820px;
+    right: 150px;
+    left: 150px;
+    bottom: 0;
+    z-index: 0;
+
+}
+
+a.Mainlogo {
+    color: white;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 35pt;
+    text-align: center;
+    margin-left: 50px;
+
+
+    transition: .5s;
+}
+a.Mainlogo:hover {
+    text-shadow: 0 0 10px  #ffffff ;
+    color: #ffe055;
+}
+
+div.headerr {
+    display: flex;
+    margin-left: 50px;
+    margin-top: 15px;
+    position: fixed;
+    width: 100%;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    height: 82px;
+    z-index: 1 ;
+    background: black;
+    align-items: center;
+}
+hr.headerLine {
+    margin-top: 50px;
+    box-shadow: 0 0 3px red;
+
+}
+span.matchId {
+    font-family: "Parimatch Regular", serif;
+    color: #22272d;
+    font-size: 10pt;
+    padding-left: 15px;
+    /*padding-top: 30px;*/
+    text-align: center;
+}
+span.current {
+    font-family: "Parimatch Regular", serif;
+    color: #22272d;
+    font-size: 35pt;
+    padding-left: 250px;
+    padding-top: 50px;
+    text-align: center;
+}
+table {
+    color: #22272d;
+    padding-top: 50px;
+    padding-left: 200px;
+    /*width: fit-content;*/
+    width: 800px;
+    border-spacing: 20px;
+
+}
+td {
+    border: 1px black solid;
+    border-radius: 9px;
+    height: 150px;
+    box-shadow: 0 0 18px  #7f8084;
+    transition: .5s;
+
+}
+td:hover {
+    transform: translateY(-5px);
+
+}
+img.team1 {
+    display: flex;
+    padding-left: 15px;
+}
+img.team2 {
+    display: flex;
+    padding-left: 23px;
+
+}
+span.team1 {
+    font-family: Helvetica, serif;
+    display: flex;
+
+    /*display: flex;*/
+}
+span.team2 {
+    font-family: Helvetica, serif;
+    display: flex;
+    padding-left: 9px;
+
+    /*display: flex;*/
+}
+div.team1 {
+    width: 100px;
+    display: inline-block;
+    padding-left: 20px;
+
+}
+div.team2 {
+    display: inline-block;
+    width: 100px;
+    /*margin-top: -30px;*/
+    padding-left: 80px;
+    text-align: center;
+    padding-right: 20px;
+}
+div.matchInfo {
+    display: inline-block;
+    margin-top: -10px;
+    padding-left: 90px;
+}
+input.value {
+    display: flex;
+    width: 93px;
+    height: 30px;
+}
+label {
+    padding-bottom: 5px;
+}
+input.firstWin {
+    width: 85px;
+    height: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #524f4e;
+    border: 1px #22272d solid ;
+    border-radius: 3px;
+    background: white;
+    transition: .5s;
+}
+input.firstWin:hover {
+    background: #98cb0d;
+    box-shadow: 0 0 4px  #ffffff;
+    color: white;
+}
+input.secondWin {
+    width: 85px;
+    height: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #524f4e;
+    border: 1px #22272d solid ;
+    border-radius: 3px;
+    background: white;
+    transition: .5s;
+    padding-right: -10px;
+}
+input.secondWin:hover {
+    background: #98cb0d;
+    /*background: #a8cb0f;*/
+    /*background: #deae36;*/
+    box-shadow: 0 0 4px  #ffffff;
+    color: white;
+}
+input.draw {
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #524f4e;
+    border: 1px #22272d solid ;
+    border-radius: 3px;
+    background: white;
+    /*box-shadow: 0 8px 15px rgba(0, 0, 0, .1);*/
+    transition: .5s;
+}
+input.draw:hover {
+    background: #ffe055;
+    /*background: #a8cb0f;*/
+    /*background: #deae36;*/
+    box-shadow: 0 0 4px  #ffffff;
+    color: white;
+}
+tr {
+}
+a.balance {
+    font-size: 18pt;
+    margin-left: 100px;
+    /*margin-top: -50px;*/
+    color: white;
+    font-family: "Parimatch Regular", serif;
+    transition: .5s;
+    text-align: center;
+    width:300px;
+    text-decoration: none;
+
+}
+a.balance:hover {
+    text-shadow: 0 0 2px  #ffffff ;
+    color: #ffe055;
+}
+a.history {
+    text-decoration: none;
+    margin-left: 50px;
+    font-size: 18pt;
+    color: white;
+    font-family: "Parimatch Regular", serif;
+    transition: .5s;
+    text-align: center;
+}
+a.history:hover {
+    text-shadow: 0 0 2px  #ffffff ;
+    color: #ffe055;
+}
+a.toMain {
+    text-decoration: none;
+    /*margin-left: 600px;*/
+    /*margin-top: -42px;*/
+    font-size: 18pt;
+    margin-left: 50px;
+    color: white;
+    font-family: "Parimatch Regular", "Helvetica",serif;
+    width: 200px;
+    transition: .5s;
+    text-align: center;
+
+}
+a.toMain:hover {
+    text-shadow: 0 0 2px  #ffffff ;
+    color: #ffe055;
+}

@@ -1,0 +1,233 @@
+
+h1{
+    color: #e6b333;
+    /*font-family: 'David Libre', 'Comic Sans MS' ,serif;*/
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 50pt;
+    /*text-align: center;*/
+    margin-left: 40%;
+}
+
+body{
+    /*background-color: #000000;*/
+    background: url("../photos/LoginImage.png") no-repeat center top / cover ;
+
+
+}
+body.register{
+    /*background-color: #000000;*/
+    background: url("../photos/RegisterImage.png") no-repeat center top / cover ;
+}
+body.confirmation {
+    background: url("../photos/StephCurry.png") no-repeat center top / cover ;
+
+}
+@font-face {
+    font-family: 'Parimatch Regular';
+    src: url('../Parimatch_fonts/Parimatch-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+label.Remember {
+    font: 22pt "Comic Sans MS";
+    color: #e6b333;
+    margin-left: 37%;
+}
+div.MainDiv{
+    /*height: fit-content;*/
+    /*width: 104%;*/
+    padding: 10px;
+    /*text-align: center;*/
+    /*border: 3px solid #fff; !* Белая рамка *!*/
+    /*border-radius: 10px; !* Радиус скругления *!*/
+}
+label {
+    margin-left: 37%;
+}
+input.login {
+    margin-top: 8px;
+    background: #22272d;
+    height: 38px;
+    border-radius:3px;
+    width: 300px;
+    border: 2px solid #7f8084;
+    outline: none;
+}
+input.login:focus {
+    border: 2px solid white;
+    box-shadow: none;
+}
+input[type="text"] {
+    border: 2px solid #22272d;
+    color: #e6b333;
+    font-size: 10pt;
+}
+input.confirmation {
+    margin-top: 8px;
+    background: #22272d;
+    height: 48px;
+    border-radius:3px;
+    width: 400px;
+    border: 2px solid #7f8084;
+    outline: none;
+}
+input.confirmation:focus {
+    border: 2px solid white;
+    box-shadow: none;
+}
+input[type="textt"] {
+    border: 2px solid #22272d;
+    color: #e6b333;
+    font-size: 14pt;
+}
+input.password {
+    margin-top: 8px;
+    height: 38px;
+    border-radius:3px;
+    width: 300px;
+    outline: none;
+    background: #22272d;
+    border: 2px solid #7f8084;
+}
+input.password:focus {
+    border: 1px solid white;
+    box-shadow: none;
+}
+input[type="password"] {
+    border: 2px solid #22272d;
+    color: #e6b333;
+    font-size: 10pt;
+}
+input[type="number"] {
+    border: 2px solid #22272d;
+    color: #e6b333;
+    font-size: 10pt;
+}
+input.submit {
+    margin-top: 15px;
+    /*color:#7f8084;*/
+    background-color:#e6b333;
+    border: 2px solid #22272d;
+    padding:7px 15px;
+    border-radius:3px;
+    font-size:0.8em;
+    height: 38px;
+    cursor:pointer;
+    margin-left: 37%;
+    width: 306px;
+    transition: .5s;
+
+}
+button.submitCode {
+    margin-top: 15px;
+    /*color:#7f8084;*/
+    background-color:#e6b333;
+    border: 2px solid #22272d;
+    padding:7px 15px;
+    border-radius:3px;
+    font-size:0.8em;
+    height: 38px;
+    cursor:pointer;
+    margin-left: 37%;
+    width: 400px;
+    transition: .5s;
+}
+button.submitCode:hover {
+    box-shadow: 0 0 14px  #ffffff;
+    transform: translateX(-5px);
+}
+input.submit:hover {
+    /*color:#d3d3d3;*/
+    box-shadow: 0 0 14px  #ffffff;
+    transform: translateX(-5px);
+}
+input[type="submit"] {
+    font-family: 'Helvetica', serif;
+    font-weight: bold;
+    font-size: 11pt;
+}
+input.submitCode {
+    margin-top: 15px;
+    /*color:#7f8084;*/
+    background-color:#e6b333;
+    border: 2px solid #22272d;
+    padding:7px 15px;
+    border-radius:3px;
+    font-size:0.8em;
+    height: 42px;
+    cursor:pointer;
+    margin-left: 37%;
+    width: 400px;
+    transition: .5s;
+
+}
+input.submitCode:hover {
+    /*color:#d3d3d3;*/
+    box-shadow: 0 0 14px  #ffffff;
+    transform: translateX(-5px);
+}
+input.submitCode[type="submit"] {
+    font-family: 'Helvetica', serif;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+img.Ovechkin {
+    position: relative;
+    z-index: -1;
+    margin-top: -410px;
+    border-color: white;
+    border: 5px;
+}
+a.vk {
+    font-size:0.8em;
+    height: 38px;
+    width: 306px;
+    margin-left: 600px;
+    font-family: 'Parimatch', sans-serif;
+    /*font-size:  14px;*/
+    border: 2px solid #22272d;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(23, 108, 203, 0.85);
+    transition: .5s;
+}
+a.vk:hover {
+    background: rgba(23, 108, 203, 0.85);
+    /*background: #a8cb0f;*/
+    /*background: #deae36;*/
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.85);
+    color: white;
+    transform: translateY(-5px);
+}
+h2.maratbet {
+    text-shadow:  0 0 7px #e6b333;
+    color: white;
+    font-family: 'Parimatch', serif;
+    font-size: 22pt;
+    margin: auto;
+    text-align: center;
+}
+input.email {
+    /*margin-top: 8px;*/
+    background: #22272d;
+    height: 38px;
+    border-radius:3px;
+    width: 300px;
+    border: 2px solid #7f8084;
+    outline: none;
+}
+input.email:focus {
+    border: 2px solid white;
+    box-shadow: none;
+}
+input[type="email"] {
+    border: 2px solid #22272d;
+    color: #e6b333;
+    font-size: 10pt;
+}
+input.emailInput
